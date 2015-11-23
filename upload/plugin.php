@@ -32,7 +32,6 @@ $pluginmodule = isset($_G['setting']['pluginlinks'][$identifier][$module]) ? $_G
 if(!preg_match('/^[\w\_]+$/', $identifier)) {
 	showmessage('plugin_nonexistence');
 }
-
 if(empty($identifier) || !preg_match("/^[a-z0-9_\-]+$/i", $module) || !in_array($identifier, $_G['setting']['plugins']['available'])) {
 	showmessage('plugin_nonexistence');
 } elseif($pluginmodule['adminid'] && ($_G['adminid'] < 1 || ($_G['adminid'] > 0 && $pluginmodule['adminid'] < $_G['adminid']))) {
@@ -40,7 +39,6 @@ if(empty($identifier) || !preg_match("/^[a-z0-9_\-]+$/i", $module) || !in_array(
 } elseif(@!file_exists(DISCUZ_ROOT.($modfile = './source/plugin/'.$pluginmodule['directory'].$module.'.inc.php'))) {
 	showmessage('plugin_module_nonexistence', '', array('mod' => $modfile));
 }
-
 define('CURMODULE', $identifier);
 runhooks();
 
